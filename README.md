@@ -12,12 +12,12 @@ Demo of a non-breaking change (adding a property to the event). The following ch
 - The other subscriber knows about the modified event and can take advantage of the additional property in the payload.
 
 ## Release 3 - Breaking change
-Demo of a breaking change due to changing the structure of a previously simple property. 
-The publisher know has to make sure it doesn't break existing subscribers, while also allowing subscribers to update to consuming the new event on their own release schedule. To do this, the publish will perform a dual write (aka double publish) of the v1 and v2 events. This allows the consumers to eventually consume the new v2 event, after which the publish can potentially stop publishing the v1 event.
+Demo of a breaking change due to changing the name of the *PurchaseOrder* property to *PurchaseOrderName*. 
+The publisher know has to make sure it doesn't break existing subscribers, while also allowing subscribers to update to consuming the new event on their own release schedule. To do this, the publish will perform a dual write (aka double publish) of the v1 and v2 events. This allows the consumers to eventually consume the new v2 event, after which the publisher can potentially stop publishing the v1 event.
 
 The following changes were made to the *Release 2* sample.
-- The publisher now publishes a v2 version of the event, which represents a non-breaking change.
-- One subscriber only knows about the v1 event. It can filter it out using a subscription filter. Since the subscriber will only receive the v1 event it will still continute to work as expected. It never receives the v2 event.
+- The publisher now publishes a v2 version of the event, which represents a breaking change.
+- One subscriber only knows about the v1 event. It can use a subscription filter to filter out any other events. Since the subscriber will only receive the v1 event it will still continute to work as expected. It never receives the v2 event.
 - The other subscriber knows about the v2 event and can consumer it. This subscriber would use a subscription filter as well to only receive the v2 event.
 
-These demos just leverage the Azure Service Bus subscription filters, but you can obviously achieve similar filtering with other technologies like Dapr pub/sub with CEL and so on as well instead.
+These demos just leverage the Azure Service Bus subscription filters, but you can obviously achieve similar filtering with other technologies like Dapr pub/sub with CEL and other options instead.
