@@ -2,6 +2,15 @@
 Simple demos showing different event versioning scenarios. The sample all leverage Azure Service Bus.
 The samples are all simple console apps with a single publisher to a topic and two subscribers to individual subscriptions under the topic.
 
+## Running the Demos
+All of the demos listed below from the repo require you to set the connection string for Azure Service Bus at the top of the various Program.cs files for the Consumer1, Consumer2, and Publisher projects. They all have a section similar to the following:
+```csharp
+string connectionString = "<sb-connection-string-here>";
+```
+You will also notice that the topicName variable is also defined at the top of the Program.cs files. The consumers also include their subscription name as well. 
+
+Note: If you are using Visual Studio, then you can also set all three projects in each demo to run using the "Multiple startup projects" option. 
+
 ## Initial Release
 Shows a simple scenario where the publisher publishes a v1 event, which is consumed by both subscribers using their own subscriptions.
 
