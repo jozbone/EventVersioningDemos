@@ -33,7 +33,7 @@ for (var i = 0; i < 10; i++)
                                            new InvoicePostedV2
                                            {
                           InvoiceNumber = Guid.NewGuid().ToString(),
-                          PurchaseOrder = new PurchaseOrder { Number = 12345, Type = "PO" },
+                          PurchaseOrderNumber = 12345,
                           submitter = i / 2 == 0 ? "John Doe" : "Jane Doe"
                       });
 

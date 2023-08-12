@@ -35,8 +35,7 @@ while (true)
     Console.WriteLine($"Time: {receivedCloudEvent.Time}");
     Console.WriteLine($"Type: {receivedCloudEvent.Type}");
     Console.WriteLine($"Type: {receivedInvoice.InvoiceNumber}");
-    Console.WriteLine($"PurchaseOrder Number: {receivedInvoice.PurchaseOrder.Number}");
-    Console.WriteLine($"PurchaseOrder Type: {receivedInvoice.PurchaseOrder.Type}");
+    Console.WriteLine($"PurchaseOrder Number: {receivedInvoice.PurchaseOrderNumber}");
 
     // complete the message, thereby deleting it from the service
     await receiver.CompleteMessageAsync(receivedMessage);

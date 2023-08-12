@@ -6,6 +6,6 @@
 
         public int? PurchaseOrder { get; set; }
 
-        public string Submitter { get; set; }
+        public string? Submitter { get; set; }
     }
 }

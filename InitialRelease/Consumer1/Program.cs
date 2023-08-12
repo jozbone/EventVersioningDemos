@@ -16,13 +16,13 @@ Console.WriteLine($"{typeof(Program).Assembly.GetName()} - Waiting for messages.
 
 while (true)
 {
-// receive the message
+    // receive the message
     ServiceBusReceivedMessage receivedMessage = await receiver.ReceiveMessageAsync();
 
-// deserialize the message body into a CloudEvent
+    // deserialize the message body into a CloudEvent
     CloudEvent receivedCloudEvent = CloudEvent.Parse(receivedMessage.Body);
 
-// deserialize to our Employee model
+    // deserialize to our Employee model
     var receivedInvoice = receivedCloudEvent.Data.ToObjectFromJson<InvoicePostedV1>();
 
     Console.WriteLine();
