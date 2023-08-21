@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Consumer1", "Consumer1\Cons
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Consumer2", "Consumer2\Consumer2.csproj", "{3A63679D-C58E-4FBC-A216-2561CAADFCF4}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "..\Common\Common.csproj", "{4272637B-BAF1-405C-87CE-EBB38045663C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Common", "..\..\Common\Common.csproj", "{4272637B-BAF1-405C-87CE-EBB38045663C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
