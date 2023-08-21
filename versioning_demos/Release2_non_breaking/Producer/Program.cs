@@ -1,12 +1,13 @@
 ﻿using Azure.Messaging;
 using Azure.Messaging.ServiceBus;
+using Common;
 using Producer;
 
-string connectionString = "<sb-connection-string>";
-string topicName = "versioning";
+var config = new DemoServiceBusConsole().BuildConfigurationRoot();
+var topicName = config["ServiceBus:TopicName"];
 
 // since ServiceBusClient implements IAsyncDisposable we create it with "await using"
-await using var client = new ServiceBusClient(connectionString);
+await using var client = DemoServiceBusClientFactory.CreateClient(config);
 
 // create the sender
 ServiceBusSender sender = client.CreateSender(topicName);

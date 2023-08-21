@@ -1,12 +1,13 @@
 ﻿using Azure.Messaging;
 using Azure.Messaging.ServiceBus;
+using Common;
 using Producer;
 
-string connectionString = "<sb-connection-string-here>"; ;
-string topicName = "versioning";
+var config = new DemoServiceBusConsole().BuildConfigurationRoot();
+var topicName = config["ServiceBus:TopicName"];
 
 // since ServiceBusClient implements IAsyncDisposable we create it with "await using"
-await using var client = new ServiceBusClient(connectionString);
+await using var client = DemoServiceBusClientFactory.CreateClient(config);
 
 // create the sender
 ServiceBusSender sender = client.CreateSender(topicName);
@@ -16,7 +17,6 @@ Console.ReadKey();
 
 for (var i = 0; i < 10; i++)
 {
-    Thread.Sleep(500);
     // create a payload using the CloudEvent type
     var cloudEventv1 = new CloudEvent(
                "/my-org/inovice",

@@ -1,13 +1,8 @@
-﻿using Azure.Messaging;
-using Azure.Messaging.ServiceBus;
-using Consumer1;
+﻿var config = new DemoServiceBusConsole().BuildConfigurationRoot();
+var topicName = config["ServiceBus:TopicName"];
+var subscriptionName = config["ServiceBus:Consumer1Subscription"];
 
-string connectionString = "<sb-connection-string>";
-string topicName = "versioning";
-string subscriptionName = "consumer1_invoice_posted_v1";
-
-// since ServiceBusClient implements IAsyncDisposable we create it with "await using"
-await using var client = new ServiceBusClient(connectionString);
+await using var client = DemoServiceBusClientFactory.CreateClient(config);
 
 // create a receiver that we can use to receive and settle the message
 ServiceBusReceiver receiver = client.CreateReceiver(topicName, subscriptionName);

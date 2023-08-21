@@ -1,0 +1,8 @@
+{
+    "ServiceBus": {
+        "Namespace": "[YOUR-NAMESPACE-HERE].servicebus.windows.net",
+        "TopicName": "versioning",
+        "Consumer1Subscription": "consumer1_invoice_posted_v1",
+        "Consumer2Subscription": "consumer2_invoice_posted_v1"
+    }
+}

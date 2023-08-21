@@ -3,13 +3,23 @@ Simple demos showing different event versioning scenarios. The sample all levera
 The samples are all simple console apps with a single publisher to a topic and two subscribers to individual subscriptions under the topic.
 
 ## Running the Demos
-All of the demos listed below from the repo require you to set the connection string for Azure Service Bus at the top of the various Program.cs files for the Consumer1, Consumer2, and Publisher projects. They all have a section similar to the following:
-```csharp
-string connectionString = "<sb-connection-string-here>";
-```
-You will also notice that the topicName variable is also defined at the top of the Program.cs files. The consumers also include their subscription name as well. 
+All of the demos listed below from the repo require you to set the appropriate namespace for Azure Service Bus. All the projects (Consumer1, Consumer2, and Publisher) reference the same Shared\SharedSettings.json file, so just make that change at that level. 
 
-Note: If you are using Visual Studio, then you can also set all three projects in each demo to run using the "Multiple startup projects" option. 
+They settings look the following:
+```json
+{
+    "ServiceBus": {
+        "Namespace": "[YOUR-NAMESPACE-HERE].servicebus.windows.net",
+        "TopicName": "versioning",
+        "Consumer1Subscription": "consumer1_invoice_posted_v1",
+        "Consumer2Subscription": "consumer2_invoice_posted_v1"
+    }
+}
+```
+You'll also notice that the settings contain the topic name and subscriptions for each of the consumer projects. You can change this to whatever you like based on your Azure Service Bus topic and subscriptions.
+
+If you are using Visual Studio, then you can also set all three projects in each demo to run using the "Multiple startup projects" option.
+If you are running from the command line, then you can run the "run-projects.bat" to launch each of the demo console apps.
 
 ## Initial Release
 Shows a simple scenario where the publisher publishes a v1 event, which is consumed by both subscribers using their own subscriptions.
